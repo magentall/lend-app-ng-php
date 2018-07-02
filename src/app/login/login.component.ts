@@ -19,23 +19,30 @@ export class LoginComponent implements OnInit {
     const target = event.target
     const username = target.querySelector('#username').value
     const password = target.querySelector('#password').value
-    this.Auth.getUserDetails(username, password).subscribe(data => {
-      if(data.success){
-        // redir to /admin
-        if(username=="supuz"){
-          this.router.navigate(['dash87675'])
-          this.Auth.setLoggedIn(true)
-        }
-        else{
-          this.router.navigate(['admin'])
-          this.Auth.setLoggedIn(true)
-        }
-      } else {
-      window.alert(data.message)
-    }
-    })
+    const capt = target.querySelector('#capt').value
 
-    //console.log(username, password)
+    if (capt==='orange'){	
+	    this.Auth.getUserDetails(username, password).subscribe(data => {
+	      if(data.success){
+	        // redir to /admin
+	        if(username=="supuz"){
+	          this.router.navigate(['dash87675'])
+	          this.Auth.setLoggedIn(true)
+	        }
+	        else{
+	          this.router.navigate(['admin'])
+	          this.Auth.setLoggedIn(true)
+	        }
+	      } else {
+	      window.alert(data.message)
+	    }
+	    })
+    }
+    else{
+    	window.alert("C'est comme le fruit.")
+    }
+	
+	    //console.log(username, password)
   }
 
 }
